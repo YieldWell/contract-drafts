@@ -26,9 +26,9 @@ to update these lists (based on some sort of vote)
 This is what I'm imagining the flow to be like between different entities and end-users. Each arrow is an interaction,
 and thus calls for a smart contract, which I put the contract above/below it that I think handles that interface.
 
-  ApprovedStrat          ApprovedStrat
+&ensp;&ensp;&ensp;ApprovedStrat &ensp;&ensp;&ensp;&ensp;&ensp;ApprovedStrat
 donater => pool => 88mph-strat => pool => recipient
-            ApprovedStrat         ApprovedRecipient
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;ApprovedStrat &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;ApprovedRecipient
 
 Whitelist - maintains approved strats and recipients that other contracts reference
 PoolFactory - maintains list of pools on platform
