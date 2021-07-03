@@ -24,11 +24,11 @@ This contract maintains a list of the whitelisted strats and recipients of the p
 to update these lists (based on some sort of vote)
 
 This is what I'm imagining the flow to be like between different entities and end-users. Each arrow is an interaction,
-and thus calls for a smart contract, which I put the contract above/below it that I think handles that interface.
+and thus calls for a smart contract, which I put the contract matching arrow number that I think handles that interface.
 
-&ensp;&ensp;&ensp;ApprovedStrat &ensp;&ensp;&ensp;&ensp;&ensp;ApprovedStrat
-donater => pool => 88mph-strat => pool => recipient
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;ApprovedStrat &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;ApprovedRecipient
+(1), (2), (3) ApprovedStrat
+(4) ApprovedRecipient
+donater (1)=> pool (2)=> 88mph-strat (3)=> pool (4)=> recipient
 
 Whitelist - maintains approved strats and recipients that other contracts reference
 PoolFactory - maintains list of pools on platform
