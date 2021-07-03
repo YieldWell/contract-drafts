@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+import "../88mph-contracts/contracts/DInterest.sol";
+
 contract PoolFactory {
 
   struct Pool {
@@ -34,15 +36,26 @@ contract PoolFactory {
   /**
    * Allows users to deposit funds to their chosen pool
    */
-  function depositToPool(uint poolID) public {
+  function depositToPool(uint poolID, uint amount) public {
     Pool storage pool = pools[poolID];
-    // increase deposit amount
+
+    DInterest mphPool = DInterest(pool.strat);
+    ERC20 token = ERC20("not sure what address goes here");
+    uint depositAmount = amount;
+    // change later, not sure what for
+    uint maturationTimeStamp = now + 365 days;
+
+    require(token.approve(address(mphPool), depositAmount));
+    mphPool.deposit(depositAmount, maturationTimestamp);
   }
 
   /**
    * 
    */
   function withdrawFromPool(uint poolID) public {
+    // withdraw from 88mph strat
 
+    // reinvest original loan
+    // pay yield to approved recipient
   }
 }
