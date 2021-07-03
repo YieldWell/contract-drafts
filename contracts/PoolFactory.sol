@@ -35,6 +35,7 @@ contract PoolFactory {
 
   /**
    * Allows users to deposit funds to their chosen pool
+   * User deposits $x to pool, which in turn takes those funds and deposits it in the pool strat
    */
   function depositToPool(uint poolID, uint amount) public {
     Pool storage pool = pools[poolID];
@@ -47,10 +48,14 @@ contract PoolFactory {
 
     require(token.approve(address(mphPool), depositAmount));
     mphPool.deposit(depositAmount, maturationTimestamp);
+
+    // increase totalDeposit of pool
+    pool.totalDeposit += amount;
   }
 
   /**
-   * 
+   * When maturationTimestamp reached, user can call this function
+   * Reinvests original loan, pays yield to recipient
    */
   function withdrawFromPool(uint poolID) public {
     // withdraw from 88mph strat
